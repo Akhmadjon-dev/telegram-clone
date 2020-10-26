@@ -1,55 +1,66 @@
 import React from "react";
-import {Search as SearchIcon, BorderColorOutlined as BorderColorIcon, PhoneOutlined, QuestionAnswerOutlined, Settings} from '@material-ui/icons';
-import {IconButton, Avatar} from '@material-ui/core';
-import SidebarThread from '../SidebarThread/SidebarThread';
-import './Sidebar.css'
+import {
+  Search as SearchIcon,
+  BorderColorOutlined as BorderColorIcon,
+  PhoneOutlined,
+  QuestionAnswerOutlined,
+  Settings,
+} from "@material-ui/icons";
+import { IconButton, Avatar } from "@material-ui/core";
+import SidebarThread from "../SidebarThread/SidebarThread";
+import { auth } from "../../firebase/Firebase";
+import "./Sidebar.css";
 const Sidebar = () => {
-  return <div className="sidebar">
+  return (
+    <div className="sidebar">
       <div className="sidebar__header">
-          <div className="sidebar__search">
-              <SearchIcon className="sidebar__icon" />
-              <input type="text" placeholder="search" className="sidebar__input"/>
-          </div>
-          <IconButton variant="outlined" id="sidebar__button">
-             <BorderColorIcon />
-          </IconButton>
-          
+        <div className="sidebar__search">
+          <SearchIcon className="sidebar__icon" />
+          <input type="text" placeholder="search" className="sidebar__input" />
+        </div>
+        <IconButton variant="outlined" id="sidebar__button">
+          <BorderColorIcon />
+        </IconButton>
       </div>
       <div className="sidebar__threads">
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
-        <SidebarThread/>
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
+        <SidebarThread />
       </div>
       <div className="sidebar__bottom">
-        <Avatar className="sidebar__bottom__avatar" />
+        <Avatar
+          className="sidebar__bottom__avatar"
+          onClick={() => auth.signOut()}
+        />
         <IconButton>
-            <PhoneOutlined/>
+          <PhoneOutlined />
         </IconButton>
         <IconButton>
-            <QuestionAnswerOutlined />
+          <QuestionAnswerOutlined />
         </IconButton>
         <IconButton>
-            <Settings />
+          <Settings />
         </IconButton>
       </div>
-  </div>;
+    </div>
+  );
 };
 
 export default Sidebar;
