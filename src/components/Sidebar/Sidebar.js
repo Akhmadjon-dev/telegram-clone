@@ -1,6 +1,6 @@
 import React from "react";
-import {Search as SearchIcon, BorderColorOutlined as BorderColorIcon} from '@material-ui/icons';
-import {IconButton} from '@material-ui/core';
+import {Search as SearchIcon, BorderColorOutlined as BorderColorIcon, PhoneOutlined, QuestionAnswerOutlined, Settings} from '@material-ui/icons';
+import {IconButton, Avatar} from '@material-ui/core';
 import SidebarThread from '../SidebarThread/SidebarThread';
 import './Sidebar.css'
 const Sidebar = () => {
@@ -17,9 +17,37 @@ const Sidebar = () => {
       </div>
       <div className="sidebar__threads">
         <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
+        <SidebarThread/>
       </div>
       <div className="sidebar__bottom">
-
+        <Avatar className="sidebar__bottom__avatar" />
+        <IconButton>
+            <PhoneOutlined/>
+        </IconButton>
+        <IconButton>
+            <QuestionAnswerOutlined />
+        </IconButton>
+        <IconButton>
+            <Settings />
+        </IconButton>
       </div>
   </div>;
 };
