@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Search as SearchIcon,
   BorderColorOutlined as BorderColorIcon,
@@ -9,8 +10,30 @@ import {
 import { IconButton, Avatar } from "@material-ui/core";
 import SidebarThread from "../SidebarThread/SidebarThread";
 import { auth } from "../../firebase/Firebase";
+import db from "../../firebase/Firebase";
+import { selectUser } from "../../features/userSlice";
 import "./Sidebar.css";
 const Sidebar = () => {
+  const user = useSelector(selectUser);
+  const [thread, setThread] = useState([]);
+  useEffect(() => {
+    db.collection("threads").onSnapshot((snapshot) =>
+      setThread(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []);
+  const addThread = () => {
+    const threadName = prompt("Enter thread name.. ");
+    if (threadName) {
+      db.collection("threads").add({
+        threadName,
+      });
+    }
+  };
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -18,31 +41,14 @@ const Sidebar = () => {
           <SearchIcon className="sidebar__icon" />
           <input type="text" placeholder="search" className="sidebar__input" />
         </div>
-        <IconButton variant="outlined" id="sidebar__button">
+        <IconButton variant="outlined" id="sidebar__button" onClick={addThread}>
           <BorderColorIcon />
         </IconButton>
       </div>
       <div className="sidebar__threads">
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
-        <SidebarThread />
+        {thread.map(({ id, data: { threadName } }) => (
+          <SidebarThread key={id} id={id} threadName={threadName} />
+        ))}
       </div>
       <div className="sidebar__bottom">
         <Avatar

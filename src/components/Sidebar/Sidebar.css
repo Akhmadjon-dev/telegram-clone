@@ -38,10 +38,10 @@
 }
 
 .sidebar__threads{
-    overflow: auto;
+    overflow: scroll;
     flex: 1;
 }
-.sidebar__threads::--webkit-scroll{
+.sidebar__threads::-webkit-scrollbar{
     display: none !important;
 }
 .sidebar__bottom{
